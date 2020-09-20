@@ -73,7 +73,11 @@ export default {
     },
     async getID64(name) {
       const response = await fetch(
-        `${this.$store.state.apiHostname}ISteamUser/ResolveVanityURL/v0001/?vanityurl=${name}`
+        `${
+          this.$store.state.apiHostname
+        }ISteamUser/ResolveVanityURL/v0001/?vanityurl=${encodeURIComponent(
+          name
+        )}`
       );
       const data = await response.json();
       if (data.response.success == 1) {
