@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    apiHostname: "https://steam-common-games.herokuapp.com/",
+    apiHostname: process.env.NODE_ENV === 'production' ? "https://steam-common-games.herokuapp.com/" : "http://localhost:5000/",
     friends: [],
     selectedFriends: [],
     commonGames: [],
