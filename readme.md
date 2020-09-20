@@ -2,7 +2,7 @@
 
 ## [Website](https://henkelmax.github.io/steam-common-games/)
 
-A simple web app, that finds steam games that you have in common with your firends.
+A simple web app, that finds steam games that you have in common with your friends.
 
 ## Project setup
 
