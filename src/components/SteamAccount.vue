@@ -1,10 +1,26 @@
 <template>
   <v-container>
     <v-form ref="form">
-      <v-text-field v-model="name" :disabled="!!id" :rules="nameRules" label="Steam Name" @keyup.enter="submit"></v-text-field>
-      <v-text-field v-model="id" :disabled="!!name" :rules="idRules" label="Steam ID 64" @keyup.enter="submit"></v-text-field>
+      <v-text-field
+        v-model="name"
+        :disabled="!!id"
+        :rules="nameRules"
+        label="Steam Name"
+        @keyup.enter="submit"
+      ></v-text-field>
+      <v-text-field
+        v-model="id"
+        :disabled="!!name"
+        :rules="idRules"
+        label="Steam ID 64"
+        @keyup.enter="submit"
+      ></v-text-field>
+      <v-container class="text-right" style="width: 100%;">
+        <v-btn dark color="error" class="mr-4" @click="$emit('back')">Back</v-btn>
+        <v-btn color="primary" @click="submit">Continue</v-btn>
+      </v-container>
     </v-form>
-    <v-btn dark bottom right fixed color="primary" class="mr-4 mb-4" @click="submit">Continue</v-btn>
+
     <v-snackbar v-model="snackbar">
       {{ snackbarText }}
       <template v-slot:action="{ attrs }">
@@ -88,7 +104,9 @@ export default {
     },
     async getPlayers(ids) {
       const response = await fetch(
-        `${this.$store.state.apiHostname}ISteamUser/GetPlayerSummaries/v0002/?steamids=${ids.join(",")}`
+        `${
+          this.$store.state.apiHostname
+        }ISteamUser/GetPlayerSummaries/v0002/?steamids=${ids.join(",")}`
       );
       const data = await response.json();
       return data.response.players;
