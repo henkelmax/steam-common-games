@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     showGame(id) {
-      window.open(`https://store.steampowered.com/app/${id}`, "_blank");
+      window.open(`steam://nav/games/details/${id}`, "_blank");
     },
   },
 };
