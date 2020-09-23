@@ -13,22 +13,27 @@ export default new Vuex.Store({
   },
   mutations: {
     setSteamID(state, id) {
-      state.steamID = id;
+      state.steamID = id
+      state.friends = []
+      state.commonGames = []
+      state.selectedFriends = []
     },
     setFriends(state, friends) {
-      state.friends = friends;
+      state.friends = friends
+      state.commonGames = []
+      state.selectedFriends = []
     },
     setSelectedFriends(state, friends) {
-      state.selectedFriends = friends;
+      state.selectedFriends = friends
     },
     setFriendGames(state, obj) {
-      let friend = state.friends.find(friend => friend.steamid === obj.id);
+      let friend = state.friends.find(friend => friend.steamid === obj.id)
       if (friend) {
-        friend.games = obj.games;
+        friend.games = obj.games
       }
     },
     setCommonGames(state, games) {
-      state.commonGames = games;
+      state.commonGames = games
     }
   },
   actions: {
